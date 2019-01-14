@@ -5,14 +5,14 @@ module.exports = shipit => {
     default: {
       branch: 'master',
       repositoryUrl:
-        'https://pierre.gendre@git.wifirst.net/webapps/collecte.git',
-      deployTo: '/var/www/collecte'
+        'https://github.com/pgendre/4scotty_challenge',
+      deployTo: '/var/www/rock_paper_scissors'
     },
     staging: {
       servers: [
         {
           // Staging proxy server IP.
-          host: '10.4.3.148',
+          host: 'MY STAGING SERVER URL',
           user: 'root'
         }
       ],
@@ -21,11 +21,11 @@ module.exports = shipit => {
     production: {
       servers: [
         {
-          host: 'collecte-si-01-ild2.management.si.wifirst.net',
+          host: 'MY PROD SERVER URL 1',
           user: 'root'
         },
         {
-          host: 'collecte-si-01-pa2.management.si.wifirst.net',
+          host: 'MY PROD SERVER URL 2',
           user: 'root'
         }
       ],
@@ -34,6 +34,6 @@ module.exports = shipit => {
   })
   // Set nginx as data owner once static files are uploaded.
   shipit.on('deployed', () => {
-    shipit.remote('chown -R nginx:nginx /var/www/collecte/releases')
+    shipit.remote('chown -R nginx:nginx /var/www/rock_paper_scissors/releases')
   })
 }
