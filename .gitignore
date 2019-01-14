@@ -1,0 +1,6 @@
+.env
+logs
+node_modules
+/log
+npm-debug.log
+/webpack/env/production.js
