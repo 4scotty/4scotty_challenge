@@ -1,7 +1,9 @@
 @import 'variables';
-@import 'root';
+@import 'main';
 @import 'header';
 @import 'menu';
 @import 'container';
 @import 'player';
+
+@import 'button/standard';
 @import 'button/switch';

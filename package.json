@@ -7,7 +7,7 @@
   "scripts": {
     "start:dev": "npm run linter && node server.js ",
     "build:staging": "export LOCALE=$LOCALE; npm run clean:staging; npm run sass && npm run chunkcss && npm run locale && npm run webpack",
-    "build:prod": "export LOCALE=$LOCALE; npm run clean:prod; npm run sass && npm run chunkcss && npm run locale && npm run webpack",
+    "build:prod": "export LOCALE=$LOCALE; npm run clean:prod; npm run sass:prod && npm run chunkcss && npm run locale && npm run webpack",
     "deploy:staging": "./node_modules/.bin/shipit staging deploy",
     "deploy:prod": "./node_modules/.bin/shipit production deploy",
     "rollback:staging": "./node_modules/.bin/shipit staging rollback",

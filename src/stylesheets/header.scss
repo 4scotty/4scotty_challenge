@@ -1,4 +1,11 @@
 .header {
-  border: solid;
   height: $header-height;
+  background-color: $main-color;
+}
+.header p {
+  font-size: 35px;
+  font-family: Courier, monospace;
+  font-weight: 800;
+  color: white;
+  padding: 10px;
 }
