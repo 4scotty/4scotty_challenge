@@ -2,11 +2,10 @@
   top: $header-height;
   height: $menu-height;
   background-color: lighten($main-color, 10%);
-  padding: 20px;
-}
-
-.menu div {
-  display:block;
-  float:left;
-  margin-right: 200px; 
+  padding: 30px;
+  div {
+    display:block;
+    float:left;
+    margin-right: 150px;
+  }
 }

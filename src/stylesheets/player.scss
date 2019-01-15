@@ -4,11 +4,47 @@
   display: block;
   height: 50%;
   background-color: lighten($main-color, 20%);
+  padding: 15px;
+
+  img {
+    height: 100%;
+    max-height: 300px;
+    position: absolute;
+    bottom: 0;
+  }
+  div {
+    display:block;
+    margin-left: 35%;
+
+    button {
+      z-index: 100;
+      font-size: 2em;
+      margin-left: 5px;
+    }
+  }
+  .choice-done {
+    color: white;
+    font-size: 3em;
+    animation: blink 2s infinite;
+    margin-left: 50%;
+    margin-top: 30px;
+  }
 }
 
-.player img {
-  height: 100%;
-  max-height: 300px;
-  position: absolute;
-  bottom: 0;
+.winner {
+  animation: colorchange 5s;
+  -webkit-animation: colorchange 5s;
+}
+
+.neutral {
+  background-color: #aaa
+}
+
+.loser {
+  background-color: #444
+}
+
+@keyframes colorchange {
+  0%   {background: $green-color; }
+  50%  {background: $warning-color; }
 }

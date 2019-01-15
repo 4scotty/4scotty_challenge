@@ -13,7 +13,6 @@ class DivPlayer {
       scissors: 'hand-scissors'
     }
     this.choices = ['rock', 'paper', 'scissors']
-
     // DOM elements regulary used are put into an attribute
     // Block of 3 choices buttons
     this.choicesElt = null
@@ -23,78 +22,113 @@ class DivPlayer {
     this.init()
   }
 
+  // Initialization  ===========================================================
   init() {
     this.initPlayerContainer()
     this.initPicture()
-    // Init User choices division only if player could be a real user
-    // (bottom container)
+    // Init User choices division only if the player could be a real user
+    // (bottom player container)
     if (this.user) this.initChoices()
   }
 
   initPlayerContainer() {
-    // Create a player container in main container
-    const container = document.getElementById('container')
-    this.addDomElt(container, 'div', this.id, 'player')
+    // Create a player container inside the main container
+    this.addDomElt(this.get('container'), 'div', [
+      { key: 'id', value: this.id },
+      { key: 'class', value: 'player' }
+    ])
   }
 
   initPicture() {
     // Add image in player container
-    const plCont = document.getElementById(this.id)
-    this.addDomElt(plCont, 'img', `avatar_${this.id}`, 'avatar', [
+    this.addDomElt(this.get(this.id), 'img', [
+      { key: 'id', value: `avatar_${this.id}` },
+      { key: 'class', value: 'avatar' },
       { key: 'src', value: `img/${this.picture}` }
     ])
   }
 
   initChoices() {
-    const parent = document.getElementById(this.id)
-    this.choicesElt = document.createElement('div')
-    this.choicesElt.setAttribute('id', 'choices')
-    this.choicesElt.style.display = 'none'
-    parent.appendChild(this.choicesElt)
-    this.choices.forEach(it => this.addChoice(this.choicesElt, it))
+    this.addDomElt(this.get(this.id), 'div', [{ key: 'id', value: 'choices' }])
+    this.choices.forEach(it => this.addChoice(it))
+    this.hideChoices()
   }
 
-  // Generic method that enables DOM element adding
-  addDomElt(parent, tag, id, className, attributes) {
-    const newElt = document.createElement(tag)
-    newElt.setAttribute('id', id)
-    newElt.setAttribute('class', 'player')
-    if (attributes) attributes.forEach(a => newElt.setAttribute(a.key, a.value))
-    parent.appendChild(newElt)
+  addChoice(type) {
+    this.addDomElt(
+      this.get('choices'),
+      'button',
+      [{ key: 'id', value: `choice${this.capitalize(type)}` }],
+      `<i class="fa fa-4x fa-${this.faClasses[type]}" ></i>`
+    )
   }
 
+
+  // DOM-updating methods  =====================================================
   displayChoices() {
-    this.choicesElt.style.display = 'block'
+    this.get('choices').style.display = 'block'
   }
 
   hideChoices() {
-    this.choicesElt.style.display = 'none'
+    this.get('choices').style.display = 'none'
   }
 
-  displayResult(result) {
-    this.displayChoiceDone(result.choice)
+  displayResult(output) {
+    this.displayChoiceDone(output.choice)
+    this.displayColor(output.result)
   }
-
-  addChoice(parent, type) {
-    const choiceElt = document.createElement('button')
-    choiceElt.setAttribute('id', `choice${this.capitalize(type)}`)
-    choiceElt.innerHTML = `<i class="fa fa-4x fa-${this.faClasses[type]}" ></i>`
-    parent.appendChild(choiceElt)
-  }
-
 
   displayChoiceDone(n) {
-    const plCont = document.getElementById(this.id)
-    this.choiceElt = document.createElement('div')
-    this.choiceElt.setAttribute('id', `choiceDone${this.id}`)
-    this.choiceElt.innerHTML = `<i class="fa fa-4x fa-${
-      this.faClasses[this.choices[n]]
-    }" ></i>`
-    plCont.appendChild(this.choiceElt)
+    this.addDomElt(
+      this.get(this.id),
+      'div',
+      [
+        { key: 'id', value: `choiceDone${this.id}` },
+        { key: 'class', value: 'choice-done' }
+      ],
+      `<i class="fa fa-4x fa-${this.faClasses[this.choices[n]]}" ></i>`
+    )
+  }
+
+  displayColor(result) {
+    console.log("RESULT =", result)
+    switch(result) {
+      case 0:
+        this.setStatus('loser')
+        break;
+      case 1:
+        this.setStatus('winner')
+        break;
+      case 2:
+        this.setStatus('neutral')
+        break;
+      default:
+        this.setStatus('neutral')
+    }
+  }
+
+  setStatus(type) {
+    this.get(this.id).setAttribute('class', `player ${type}`)
   }
 
   reset() {
-    if (this.choiceElt !== null) this.choiceElt.remove()
+    const elt = this.get(`choiceDone${this.id}`)
+    if (!_.isUndefined(elt) && elt !== null) elt.remove()
+    this.setStatus('')
+  }
+
+  // Generic method to manage DOM ==============================================
+
+  get(id) {
+    return document.getElementById(id)
+  }
+
+  // Generic method that enables DOM element creation
+  addDomElt(parent, tag, attributes, html) {
+    const newElt = document.createElement(tag)
+    if (attributes) attributes.forEach(a => newElt.setAttribute(a.key, a.value))
+    if (!_.isUndefined(html)) newElt.innerHTML = html
+    parent.appendChild(newElt)
   }
 
   capitalize(str) {
