@@ -1,6 +1,10 @@
-# Collecte
+# R2D2 vs Terminator
 
-NB: A complete version of documentation is available in _./doc/typora/Doc.pdf_.
+## Presentation
+
+Full front application that allows you to play rock/paper/scissors.
+NB : The Koa server is only used in development environment. The build generates static files that should be served by NGINX.
+
 
 ## Installing and start in development environment
 
@@ -15,7 +19,7 @@ Development environment variables are defined in _./webpack/env.development.js_ 
 Start the application in development environment:
 
 ```
-npm run start
+npm run start:dev
 ```
 
 ## Build and deployment (staging/production)

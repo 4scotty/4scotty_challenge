@@ -14,7 +14,7 @@ const _ = require('lodash')
 let configs = []
 
 const getStylesAssets = () => {
-  return fs.readdirSync(path.resolve(`dist/${env}/static/css/`))
+  return fs.readdirSync(path.resolve(`dist/${env}/css/`))
 }
 
 for (let fileName in entries) {
@@ -23,18 +23,18 @@ for (let fileName in entries) {
     output: {
       path: path.resolve(`dist/${env}`),
       publicPath: '/',
-      filename: `static/js/[name].[chunkhash].min.js`
+      filename: `js/[name].[chunkhash].min.js`
     },
     plugins: [
       new UglifyJSPlugin(),
       new webpack.NoEmitOnErrorsPlugin(),
       new HtmlWebpackPlugin({
         filename: `${fileName}.html`,
-        template: path.resolve('src/views/index.html')
+        template: path.resolve('src/template/index.html')
       }),
       new webpack.DefinePlugin(envFile()),
       new HtmlWebpackIncludeAssetsPlugin({
-        assets: getStylesAssets().map(fileName => `static/css/${fileName}`),
+        assets: getStylesAssets().map(fileName => `css/${fileName}`),
         append: true
       })
     ]

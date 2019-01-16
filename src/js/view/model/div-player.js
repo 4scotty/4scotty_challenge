@@ -63,7 +63,6 @@ class DivPlayer {
     )
   }
 
-
   // DOM-updating methods  =====================================================
   displayChoices() {
     this.get('choices').style.display = 'block'
@@ -91,17 +90,17 @@ class DivPlayer {
   }
 
   displayColor(result) {
-    console.log("RESULT =", result)
-    switch(result) {
+    console.log('RESULT =', result)
+    switch (result) {
       case 0:
         this.setStatus('loser')
-        break;
+        break
       case 1:
         this.setStatus('winner')
-        break;
+        break
       case 2:
         this.setStatus('neutral')
-        break;
+        break
       default:
         this.setStatus('neutral')
     }
