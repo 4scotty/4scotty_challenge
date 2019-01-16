@@ -3,7 +3,7 @@
 ## Presentation
 
 Full front application that allows you to play rock / paper / scissors. </br>
-NB : The Koa server is only used in development environment.
+NB: Server side code is only used to provide a development environment.
 
 ## Installing and start in development environment
 
@@ -13,7 +13,7 @@ NB : The Koa server is only used in development environment.
 cd /path/to/directory
 npm install
 ```
-Development environment variables are defined in _./webpack/env.development.js_ .
+Development environment variables are defined in _./webpack/env/development.js_ .
 
 2. Start the application in development environment:
 
@@ -21,7 +21,7 @@ Development environment variables are defined in _./webpack/env.development.js_ 
 npm run start:dev
 ```
 
-3. Open a browser and go on _localhost:3036_
+3. The app is available on _localhost:3036_
 
 ## Tests
 
@@ -33,10 +33,8 @@ npm test
 
 ## Build and deployment
 
-In production environment, static files are served by NGINX.
-The NGINX configuration is available in _./nginx/configuration_.<\br>
-NB: Production build files are chunked in order to avoid caching issues. A chunk is a linked to a unique version.<\br>
-NB: Server side code is only used to provide a development environment.
+In production environment, static files are served by NGINX.<\br>
+NB: Production build files are chunked in order to avoid caching issues. A chunk is linked to a unique version.<\br>
 
 
 ### Project building
@@ -65,9 +63,8 @@ NB : SSH configuration should be configured to access remote servers
 
 ### Rollback
 
-Rollback allows you to deploy previous version.
+Rollback allows you to deploy previous version :
 
-Staging:
 ```
 npm run rollback
 ```
