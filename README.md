@@ -23,6 +23,13 @@ npm run start:dev
 
 3. Open a browser and go on _localhost:3036_
 
+## Tests
+
+To run test :
+
+```
+npm test
+```
 
 ## Build and deployment
 
@@ -69,6 +76,7 @@ npm run rollback
 
 ```
 npm run start:dev                         // Start in development environment
+npm test                                  // Run Jest tests
 npm run build                             // Build minified static files for production
 npm run build:clean                       // Clean built files
 
