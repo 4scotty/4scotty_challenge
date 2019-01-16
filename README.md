@@ -2,7 +2,7 @@
 
 ## Presentation
 
-Full front application that allows you to play rock / paper / scissors.
+Full front application that allows you to play rock / paper / scissors. </br>
 NB : The Koa server is only used in development environment.
 
 ## Installing and start in development environment
@@ -27,9 +27,8 @@ npm run start:dev
 ## Build and deployment
 
 In production environment, static files are served by NGINX.
-The NGINX configuration is available in _./nginx/configuration_.
-
-NB: Production build files are chunked in order to avoid caching issues. A chunk is a linked to a unique version.
+The NGINX configuration is available in _./nginx/configuration_.<\br>
+NB: Production build files are chunked in order to avoid caching issues. A chunk is a linked to a unique version.<\br>
 NB: Server side code is only used to provide a development environment.
 
 
