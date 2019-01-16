@@ -2,13 +2,12 @@
 
 ## Presentation
 
-Full front application that allows you to play rock/paper/scissors.
-NB : The Koa server is only used in development environment. The build generates static files that should be served by NGINX.
-
+Full front application that allows you to play rock / paper / scissors.
+NB : The Koa server is only used in development environment.
 
 ## Installing and start in development environment
 
-Install node modules:
+1. Install node modules:
 
 ```
 cd /path/to/directory
@@ -16,27 +15,28 @@ npm install
 ```
 Development environment variables are defined in _./webpack/env.development.js_ .
 
-Start the application in development environment:
+2. Start the application in development environment:
 
 ```
 npm run start:dev
 ```
 
-## Build and deployment (staging/production)
+3. Open a browser and go on _localhost:3036_
 
-The project is a frontend-only application.
-In staging/production environment, static files are served by NGINX.
+
+## Build and deployment
+
+In production environment, static files are served by NGINX.
 The NGINX configuration is available in _./nginx/configuration_.
 
-NB: Server side code is used to provide a development environment.
-
+NB: Server side code is only used to provide a development environment.
 
 ### Project building
 
 Build static files using following commands:
 
 ```
-LOCALE=[LOCALE] ENV=[ENV] npm run build
+npm run build
 ```
 
 _[ENV]_     = _'production'_ or _'staging'_

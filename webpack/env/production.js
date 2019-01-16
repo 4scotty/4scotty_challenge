@@ -4,7 +4,7 @@ const path = require('path')
 
 const env = () => {
   return {
-    '_ENV_': JSON.stringify('staging')
+    '_ENV_': JSON.stringify('production'),
   }
 }
 
