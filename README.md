@@ -25,7 +25,7 @@ npm run start:dev
 
 ## Tests
 
-To run test :
+To run tests:
 
 ```
 npm test
