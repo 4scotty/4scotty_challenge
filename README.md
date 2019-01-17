@@ -90,11 +90,10 @@ npm run test                              // Start tests
 |-- dist                                   > Public files
 |   |-- [ENV_NAME]                         > Environment
 |-- scripts                                > Node scripts (build sass / chunk)
-|-- test                                   > Integration and unit tests
 |-- webpack                                > Webpack configuration
 |   |-- conf.dev.js                        > Development configuration
-|   |-- conf.prod.js                       > Production configuration
-|   |-- entry.js                           > Set of webpack entries
+|   |-- conf.build.js                      > Build configuration
+|   |-- entries.js                         > Set of JS entries
 |   |-- shared.js                          > Shared configuration
 ```
 
