@@ -33,8 +33,8 @@ npm test
 
 ## Build and deployment
 
-In production environment, static files are served by NGINX.<\br>
-NB: Production build files are chunked in order to avoid caching issues. A chunk is linked to a unique version.<\br>
+In production environment, static files are served by NGINX.</br>
+NB: Production build files are chunked in order to avoid caching issues. A chunk is linked to a unique version.</br>
 
 
 ### Project building
